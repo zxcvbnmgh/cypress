@@ -13,7 +13,9 @@ describe('Проверка авторизации', function () {
          cy.get('.k_input_ccv').type('125');                             // вводим CVV карты
          cy.get('.k_input_date').type('1225');                           // вводим срок действия карты
          cy.get('.k_input_name').type('NAME SURNAME');                   // вводим имя владельца действия карты
+         cy.wait(2000);
          cy.get('.pay-btn').click();                                     // нажимаем кнопку Оплатить
+         cy.wait(2000);
          cy.get('#cardnumber').type('56456');                            // вводим код подтверждения СМС
          cy.get('.payment__submit-button').click();                      // нажимаем кнопку Отправить
          cy.contains('Покупка прошла успешно').should('be.visible');     // проверяем наличие и видимость сообщения о успешной покупке
