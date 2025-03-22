@@ -1,9 +1,11 @@
+import * as data from "../helpers/default_data.json" // импорт логина и пароля
+
 describe('Проверка авторизации', function () {
 
     it('Верный пароль и верный логин', function () {
          cy.visit('https://pokemonbattle.ru/login'); // зашли на сайт
-         cy.get(':nth-child(1) > .auth__input').type('USER_LOGIN'); // ввели верную почту
-         cy.get('#password').type('USER_PASSWORD'); // ввели верный пароль
+         cy.get(':nth-child(1) > .auth__input').type(data.login); // ввели верную почту
+         cy.get('#password').type(data.password); // ввели верный пароль
          cy.get('.auth__button').click(); // нажали кнопку войти
          cy.wait(2000);
          cy.get('.header__container > .header__id').click({ force: true }); // нажали на наш аватар
